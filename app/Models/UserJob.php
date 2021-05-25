@@ -7,26 +7,21 @@
     // library to create Model under lumen
     use Illuminate\Database\Eloquent\Model;
 
-    class User extends Model{
+    class UserJob extends Model{
         
         // name of table
-         protected $table = 'tbluser';
+         protected $table = 'tbluserjob';
         // column sa table
          protected $fillable = [
-            'username', 'password','gender','jobid'
+            'jobid', 'jobname',
          ];
 
         // The code below will not require the field create_at and update_at in lumen
         public $timestamps = false;
 
         // The code will customized your primary key field name, default in lumen is id
-        protected $primaryKey = 'userid';
+        protected $primaryKey = 'jobid';
 
-        // fields that should be hidden like password
-        // The attributes excluded from the model's JSON form.
-        protected $hidden = [
-            'password',
-        ];
     }
 
     

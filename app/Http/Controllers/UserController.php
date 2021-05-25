@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 //use App\User;
 use App\Models\User;  // <-- your model is located insired Models Folder
+use App\Models\UserJob; 
+
 use Illuminate\Http\Response; // Response Components
 use App\Traits\ApiResponser;  // <-- use to standardized our code for api response
 use Illuminate\Http\Request;  // <-- handling http request in lumen
@@ -26,10 +28,12 @@ Class UserController extends Controller {
 
         // sql string as parameter
         $users = DB::connection('mysql')
-        ->select("Select * from tbluser");
+        ->select("Select * from tbluser where userid <= 3");
 
         // return response()->json($users, 200);
-        return $this->successResponse($users);
+        // return response()->json(['data' => $users, 'site' => 1], 200);
+        return response()->json(['data' => $users], 200);
+        // return $this->successResponse($users);
     }
     /**
      * Return the list of users
@@ -53,10 +57,13 @@ Class UserController extends Controller {
             'username' => 'required|max:20',
             'password' => 'required|max:20',
             'gender' => 'required|in:Male,Female',
+            'jobid' => 'required|numeric|min:1|not_in:0',
         ];
 
         $this->validate($request,$rules);
 
+        // validate if Jobid is found in the table tbluserjob
+        // $userjob = UserJob::findOrFail($request->jobid);
         $user = User::create($request->all());
 
         return $this->successResponse($user, Response::HTTP_CREATED);
@@ -94,9 +101,13 @@ Class UserController extends Controller {
         'username' => 'max:20',
         'password' => 'max:20',
         'gender' => 'in:Male,Female',
+        'jobid' => 'required|numeric|min:1|not_in:0',
         ];
 
         $this->validate($request, $rules);
+
+        // validate if Jobid is found in the table tbluserjob
+        // $userjob = UserJob::findOrFail($request->jobid);
         $user = User::findOrFail($id);
             
         $user->fill($request->all());
