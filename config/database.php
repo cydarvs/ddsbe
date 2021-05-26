@@ -30,20 +30,30 @@ return [
     | choice installed on your machine before you begin development.
     |
     */
-    'migrations' => 'migrations',
-    'connections' => [
 
-        'mysql' => [
+    /*
             'driver'        => 'mysql',
             'host'          => env('DB_HOST', 'aaremotemysql.com'),
             'port'          => env('DB_PORT', 'aa3306'),
             'database'      => env('DB_DATABASE', 'aa1PpHofpOUL'),
             'username'      => env('DB_USERNAME', 'aa1PpHofpOUL'),
             'password'      => env('DB_PASSWORD', 'aaMuYoOFwEPy'),
-            // 'unix_socket'   => env('DB_SOCKET', ''),
-            // 'charset'       => env('DB_CHARSET', 'utf8'),
-            // 'collation'     => env('DB_COLLATION', 'utf8_unicode_ci'),
-            // 'prefix'        => env('DB_PREFIX', ''),
+    */
+
+    'migrations' => 'migrations',
+    'connections' => [
+
+        'mysql' => [
+            'driver'        => 'mysql',
+            'host'          => env('DB_HOST', null),
+            'port'          => env('DB_PORT', null),
+            'database'      => env('DB_DATABASE', null),
+            'username'      => env('DB_USERNAME', null),
+            'password'      => env('DB_PASSWORD', null),
+            'unix_socket'   => env('DB_SOCKET', ''),
+            'charset'       => env('DB_CHARSET', 'utf8'),
+            'collation'     => env('DB_COLLATION', 'utf8_unicode_ci'),
+            'prefix'        => env('DB_PREFIX', ''),
             // 'strict'        => env('DB_STRICT_MODE', false),
             // 'engine'        => env('DB_ENGINE', null),
             // 'timezone'      => env('DB_TIMEZONE', '+00:00'),
@@ -60,18 +70,7 @@ return [
             'prefix'        => env('DB_PREFIX', ''),
         ],
 
-        'sqlsrv_ho' => [
-            'driver'        => 'sqlsrv',
-            'host'          => env('DB_HOST2', null),
-            'port'          => env('DB_PORT2', null),
-            'database'      => env('DB_DATABASE2', null),
-            'username'      => env('DB_USERNAME2', null),
-            'password'      => env('DB_PASSWORD2', null),
-            'charset'       => env('DB_CHARSET', 'utf8'),
-            'prefix'        => env('DB_PREFIX', ''),
-        ],
-
-        'testing' => [
+        'sqlite' => [
             'driver'        => 'sqlite',
             'database'      => ':memory:',
             'host'          => database_path('testing.sqlite'),
