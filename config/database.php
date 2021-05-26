@@ -31,15 +31,6 @@ return [
     |
     */
 
-    /*
-            'driver'        => 'mysql',
-            'host'          => env('DB_HOST', 'aaremotemysql.com'),
-            'port'          => env('DB_PORT', 'aa3306'),
-            'database'      => env('DB_DATABASE', 'aa1PpHofpOUL'),
-            'username'      => env('DB_USERNAME', 'aa1PpHofpOUL'),
-            'password'      => env('DB_PASSWORD', 'aaMuYoOFwEPy'),
-    */
-
     'migrations' => 'migrations',
     'connections' => [
 
@@ -70,7 +61,7 @@ return [
             'prefix'        => env('DB_PREFIX', ''),
         ],
 
-        'sqlite' => [
+        'testing' => [
             'driver'        => 'sqlite',
             'database'      => ':memory:',
             'host'          => database_path('testing.sqlite'),
